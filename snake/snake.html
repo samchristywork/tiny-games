@@ -16,6 +16,7 @@ let food = {
   y: Math.floor(Math.random() * 25)
 };
 let score = 0;
+let gameRunning = true;
 
 function drawGrid() {
   ctx.strokeStyle = "#ccc";
@@ -47,7 +48,19 @@ function drawScore() {
   ctx.fillText(`Score: ${score}`, 10, 20);
 }
 
+function gameOver() {
+  gameRunning = false;
+  ctx.fillStyle = "red";
+  ctx.font = "40px Arial";
+  ctx.textAlign = "center";
+  ctx.fillText("Game Over!", canvas.width / 2, canvas.height / 2);
+}
+
 function draw() {
+  if (!gameRunning) {
+    return;
+  }
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawGrid();
   drawSnake();
@@ -55,6 +68,12 @@ function draw() {
   drawScore();
 
   const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
+
+  if (head.x < 0 || head.x >= 25 || head.y < 0 || head.y >= 25) {
+    gameOver();
+    return;
+  }
+
   snake.unshift(head);
 
   if (head.x === food.x && head.y === food.y) {
