@@ -50,8 +50,17 @@ function drawFood() {
 
 function drawScore() {
   ctx.fillStyle = "black";
+  ctx.textAlign = "left";
   ctx.font = "20px Arial";
   ctx.fillText(`Score: ${score}`, 10, 20);
+}
+
+function drawInstructions() {
+  ctx.fillStyle = "black";
+  ctx.font = "16px Arial";
+  ctx.textAlign = "right";
+  ctx.fillText("Use arrow keys or WASD to move", canvas.width - 10, 20);
+  ctx.fillText("Press 'R' to restart", canvas.width - 10, 40);
 }
 
 function gameOver() {
@@ -72,6 +81,7 @@ function draw() {
   drawSnake();
   drawFood();
   drawScore();
+  drawInstructions();
 
   if (direction.x === 0 && direction.y === 0) {
     return;
