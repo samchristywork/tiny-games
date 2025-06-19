@@ -125,6 +125,10 @@ document.addEventListener("keydown", event => {
   else if (event.key === "d") newDirection = { x: 1, y: 0 };
   else if (event.key === "r") window.location.reload();
 
+  if (newDirection.x === 0 && newDirection.y === 0) {
+    return;
+  }
+
   if (newDirection.x !== -direction.x || newDirection.y !== -direction.y) {
     direction = newDirection;
   }
