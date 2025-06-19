@@ -104,10 +104,20 @@ function draw() {
 }
 
 document.addEventListener("keydown", event => {
-  if (event.key === "ArrowUp") direction = { x: 0, y: -1 };
-  else if (event.key === "ArrowDown") direction = { x: 0, y: 1 };
-  else if (event.key === "ArrowLeft") direction = { x: -1, y: 0 };
-  else if (event.key === "ArrowRight") direction = { x: 1, y: 0 };
+  let newDirection = { x: 0, y: 0 };
+  if (event.key === "ArrowUp") newDirection = { x: 0, y: -1 };
+  else if (event.key === "ArrowDown") newDirection = { x: 0, y: 1 };
+  else if (event.key === "ArrowLeft") newDirection = { x: -1, y: 0 };
+  else if (event.key === "ArrowRight") newDirection = { x: 1, y: 0 };
+  else if (event.key === "w") newDirection = { x: 0, y: -1 };
+  else if (event.key === "s") newDirection = { x: 0, y: 1 };
+  else if (event.key === "a") newDirection = { x: -1, y: 0 };
+  else if (event.key === "d") newDirection = { x: 1, y: 0 };
+  else if (event.key === "r") window.location.reload();
+
+  if (newDirection.x !== -direction.x || newDirection.y !== -direction.y) {
+    direction = newDirection;
+  }
 });
 
 setInterval(() => {
