@@ -5,11 +5,14 @@
 <div id="t" onclick="randPos()">Click To Start</div>
 <script>
 let t=document.getElementById('t')
+let w=window
+t.style.left=`${(w.innerWidth-t.offsetWidth)/2}px`
+t.style.top=`${(w.innerHeight-t.offsetHeight)/2}px`
 
 function randPos() {
 t.innerText='Click Again'
-t.style.left=`${Math.random()*(window.innerWidth-t.offsetWidth)}px`
-t.style.top=`${Math.random()*(window.innerHeight-t.offsetHeight)}px`
+t.style.left=`${Math.random()*(w.innerWidth-t.offsetWidth)}px`
+t.style.top=`${Math.random()*(w.innerHeight-t.offsetHeight)}px`
 }
 </script>
 </body>
