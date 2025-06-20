@@ -4,6 +4,7 @@
 <div id="s"></div>
 <div id="t" onclick="randPos()">Click To Start</div>
 <script>
+let s=0
 let t=document.getElementById('t')
 let w=window
 t.style.left=`${(w.innerWidth-t.offsetWidth)/2}px`
@@ -13,6 +14,7 @@ function randPos() {
 t.innerText='Click Again'
 t.style.left=`${Math.random()*(w.innerWidth-t.offsetWidth)}px`
 t.style.top=`${Math.random()*(w.innerHeight-t.offsetHeight)}px`
+document.getElementById('s').innerText=`Score: ${++s}`
 }
 </script>
 </body>
