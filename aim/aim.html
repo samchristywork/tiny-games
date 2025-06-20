@@ -3,5 +3,14 @@
 <body>
 <div id="s"></div>
 <div id="t" onclick="randPos()">Click To Start</div>
+<script>
+let t=document.getElementById('t')
+
+function randPos() {
+t.innerText='Click Again'
+t.style.left=`${Math.random()*(window.innerWidth-t.offsetWidth)}px`
+t.style.top=`${Math.random()*(window.innerHeight-t.offsetHeight)}px`
+}
+</script>
 </body>
 </html>
