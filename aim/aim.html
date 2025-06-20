@@ -1,5 +1,26 @@
 <!doctype html>
 <html>
+<head><style>
+#t {
+position: absolute;
+width: 120px;
+height: 120px;
+background-color: #4CAF50;
+color: white;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 1.2em;
+cursor: pointer;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+transition: left 0.3s, top 0.3s, background-color 0.3s;
+user-select: none;
+}
+#t:hover {
+background-color: #43A047;
+}
+</style></head>
 <body>
 <div id="s"></div>
 <div id="t" onclick="randPos()">Click To Start</div>
