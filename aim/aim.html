@@ -15,6 +15,10 @@ t.innerText='Click Again'
 t.style.left=`${Math.random()*(w.innerWidth-t.offsetWidth)}px`
 t.style.top=`${Math.random()*(w.innerHeight-t.offsetHeight)}px`
 document.getElementById('s').innerText=`Score: ${++s}`
+setTimeout(() => {
+t.innerText=`Time's Up!`
+t.onclick = null
+}, 5000)
 }
 </script>
 </body>
