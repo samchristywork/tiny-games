@@ -1,28 +1,45 @@
 <!doctype html>
-<html>
-  <body>
-    <input type="number" id="g" placeholder="Enter your guess" />
-    <div id="result"></div>
-  </body>
+<html><head><style>
+body {
+  text-align: center;
+  transform: translateY(-50%);
+  margin-top: 50vh;
+}
+input {
+  width: 10rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+#result {
+  font-size: 1.5rem;
+  height: 2rem;
+}
+</style><body>
+<input type="number" id="g" placeholder="Enter your guess" />
+<div id="result"></div>
+</body>
 </html>
 <script>
-  let n = Math.floor(Math.random() * 100) + 1;
-  let result = document.querySelector('#result');
-  let input = document.querySelector('#g');
-  input.focus();
-  input.addEventListener('keyup', (e) => {
-    if (e.key !== 'Enter') return;
+let n=Math.floor(Math.random()*100)+1
+let r=document.querySelector('#result')
+let input=document.querySelector('#g')
+let tries=0
+input.focus()
+input.addEventListener('keyup', (e) => {
+  r.textContent=''
+  if (e.key!=='Enter')return
 
-    const g = parseInt(input.value, 10);
-    if (g < 1 || g > 100 || isNaN(g)) {
-      result.textContent = 'Your guess must be a number between 1 and 100.';
-      return;
-    } else if (g === n) {
-      result.textContent = 'Congratulations! You guessed the number!';
-    } else if (g < n) {
-      result.textContent = 'Too low! Try again.';
-    } else {
-      result.textContent = 'Too high! Try again.';
-    }
-  });
+  let g=parseInt(input.value, 10)
+  if (g<1||g>100||isNaN(g)) {
+    r.textContent='Your guess must be a number between 1 and 100.'
+    return
+  } else if (g===n) {
+    r.textContent=`Congratulations! You guessed the number in ${tries+1} tries!`
+  } else if (g<n) {
+    r.textContent='Too low! Try again.'
+  } else {
+    r.textContent='Too high! Try again.'
+  }
+  tries++
+})
 </script>
