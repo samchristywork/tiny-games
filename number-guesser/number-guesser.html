@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <body>
+    <input type="number" id="g" placeholder="Enter your guess" />
+    <div id="result"></div>
+  </body>
+</html>
+<script>
+  let n = Math.floor(Math.random() * 100) + 1;
+  let result = document.querySelector('#result');
+  let input = document.querySelector('#g');
+  input.focus();
+  input.addEventListener('keyup', (e) => {
+    if (e.key !== 'Enter') return;
+
+    const g = parseInt(input.value, 10);
+    if (g < 1 || g > 100 || isNaN(g)) {
+      result.textContent = 'Your guess must be a number between 1 and 100.';
+      return;
+    } else if (g === n) {
+      result.textContent = 'Congratulations! You guessed the number!';
+    } else if (g < n) {
+      result.textContent = 'Too low! Try again.';
+    } else {
+      result.textContent = 'Too high! Try again.';
+    }
+  });
+</script>
