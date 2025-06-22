@@ -44,6 +44,14 @@ function drawNet() {
   ctx.stroke();
 }
 
+function drawScore() {
+  ctx.fillStyle = "white";
+  ctx.font = "20px Arial";
+  ctx.textAlign = "center";
+  ctx.fillText(leftScore, canvas.width / 4, 30);
+  ctx.fillText(rightScore, (canvas.width * 3) / 4, 30);
+}
+
 function drawPaddles() {
   ctx.fillStyle = "white";
   ctx.fillRect(leftPaddle.x, leftPaddle.y, leftPaddle.width, leftPaddle.height);
@@ -57,11 +65,21 @@ function drawBall() {
   ctx.fill();
 }
 
+function drawInstructions() {
+  ctx.fillStyle = "white";
+  ctx.font = "16px Arial";
+  ctx.textAlign = "center";
+  ctx.fillText("Use W/S for left paddle, Up/Down for right paddle", canvas.width / 2, canvas.height - 20);
+  ctx.fillText("Press R to reset the game", canvas.width / 2, canvas.height - 40);
+}
+
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawNet();
+  drawScore();
   drawPaddles();
   drawBall();
+  drawInstructions();
 }
 
 function simulate() {
