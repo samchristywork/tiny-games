@@ -6,4 +6,65 @@
  </body>
 </html>
 <script>
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+
+let leftPaddle = {
+  x: 10,
+  y: 250,
+  width: 10,
+  height: 50,
+  dy: 0
+};
+let rightPaddle = {
+  x: 480,
+  y: 250,
+  width: 10,
+  height: 50,
+  dy: 0
+};
+let ball = {
+  x: 250,
+  y: 250,
+  radius: 10,
+  dx: 2,
+  dy: 2
+};
+let paddleSpeed = 4;
+let leftScore = 0;
+let rightScore = 0;
+
+function drawNet() {
+  ctx.strokeStyle = "white";
+  ctx.beginPath();
+  for (let i = 0; i < canvas.height; i += 20) {
+    ctx.moveTo(canvas.width / 2, i);
+    ctx.lineTo(canvas.width / 2, i + 10);
+  }
+  ctx.stroke();
+}
+
+function drawPaddles() {
+  ctx.fillStyle = "white";
+  ctx.fillRect(leftPaddle.x, leftPaddle.y, leftPaddle.width, leftPaddle.height);
+  ctx.fillRect(rightPaddle.x, rightPaddle.y, rightPaddle.width, rightPaddle.height);
+}
+
+function drawBall() {
+  ctx.fillStyle = "white";
+  ctx.beginPath();
+  ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawNet();
+  drawPaddles();
+  drawBall();
+}
+
+setInterval(() => {
+  draw();
+}, 1000 / 60);
 </script>
