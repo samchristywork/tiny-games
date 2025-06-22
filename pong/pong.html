@@ -97,6 +97,21 @@ function simulate() {
   }
 }
 
+document.addEventListener("keydown", event => {
+  if (event.key === "w") leftPaddle.dy = -paddleSpeed;
+  if (event.key === "s") leftPaddle.dy = paddleSpeed;
+  if (event.key === "ArrowUp") rightPaddle.dy = -paddleSpeed;
+  if (event.key === "ArrowDown") rightPaddle.dy = paddleSpeed;
+  if (event.key === "r") window.location.reload();
+});
+
+document.addEventListener("keyup", event => {
+  if (event.key === "w" && leftPaddle.dy < 0) leftPaddle.dy = 0;
+  if (event.key === "s" && leftPaddle.dy > 0) leftPaddle.dy = 0;
+  if (event.key === "ArrowUp" && rightPaddle.dy < 0) rightPaddle.dy = 0;
+  if (event.key === "ArrowDown" && rightPaddle.dy > 0) rightPaddle.dy = 0;
+});
+
 setInterval(() => {
   simulate();
   draw();
