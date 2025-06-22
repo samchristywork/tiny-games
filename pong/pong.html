@@ -64,7 +64,41 @@ function draw() {
   drawBall();
 }
 
+function simulate() {
+  leftPaddle.y += leftPaddle.dy;
+  rightPaddle.y += rightPaddle.dy;
+
+  leftPaddle.y = Math.max(0, Math.min(canvas.height - leftPaddle.height, leftPaddle.y));
+  rightPaddle.y = Math.max(0, Math.min(canvas.height - rightPaddle.height, rightPaddle.y));
+
+  ball.x += ball.dx;
+  ball.y += ball.dy;
+
+  if (ball.y <= ball.radius || ball.y >= canvas.height - ball.radius) {
+    ball.dy *= -1;
+  }
+
+  if (ball.x - ball.radius <= leftPaddle.x + leftPaddle.width &&
+      ball.x > leftPaddle.x &&
+      ball.y >= leftPaddle.y &&
+      ball.y <= leftPaddle.y + leftPaddle.height) {
+    ball.dx *= -1;
+    ball.dy = (ball.y - (leftPaddle.y + leftPaddle.height / 2)) / (leftPaddle.height / 2) * 2;
+    ball.x = leftPaddle.x + leftPaddle.width + ball.radius;
+  }
+
+  if (ball.x + ball.radius >= rightPaddle.x &&
+      ball.x < rightPaddle.x + rightPaddle.width &&
+      ball.y >= rightPaddle.y &&
+      ball.y <= rightPaddle.y + rightPaddle.height) {
+    ball.dx *= -1;
+    ball.dy = (ball.y - (rightPaddle.y + rightPaddle.height / 2)) / (rightPaddle.height / 2) * 2;
+    ball.x = rightPaddle.x - ball.radius;
+  }
+}
+
 setInterval(() => {
+  simulate();
   draw();
 }, 1000 / 60);
 </script>
