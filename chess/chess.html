@@ -4,4 +4,22 @@
 <body><div id="board"></div></body>
 </html>
 <script>
+let selected=[null,null];
+let board=document.getElementById("board");
+let b=[
+["♖","♘","♗","♕","♔","♗","♘","♖"],
+["♙","♙","♙","♙","♙","♙","♙","♙"],
+[".",".",".",".",".",".",".","."],
+[".",".",".",".",".",".",".","."],
+[".",".",".",".",".",".",".","."],
+[".",".",".",".",".",".",".","."],
+["♟","♟","♟","♟","♟","♟","♟","♟"],
+["♜","♞","♝","♛","♚","♝","♞","♜"]];
+
+function update(fromRow,fromCol,toRow,toCol) {
+  let piece=b[fromRow][fromCol];
+  b[fromRow][fromCol]=".";
+  b[toRow][toCol]=piece;
+  render();
+}
 </script>
